@@ -1,0 +1,11 @@
+.TodoFinished {
+    /*display: inline-block;*/
+    width: 47%;
+
+    
+    margin-right: 5px;
+    margin-left: 3.5px;
+
+    padding: 0 0 56px 0;
+    list-style: none;
+}

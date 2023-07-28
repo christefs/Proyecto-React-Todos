@@ -4,6 +4,11 @@ import { TodoCounter } from '../TodoCounter';
 import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
+
+import { TodoTwoList } from '../TodoTwoList';
+import { TodoFinished } from '../TodoFinished';
+import { TodoItem2 } from '../TodoItem2';
+
 import { TodosLoading} from '../TodosLoading';
 import { TodosError } from '../TodosError';
 import { EmptyTodos } from '../EmptyTodos';
@@ -31,7 +36,8 @@ function AppUI() {
           <TodoCounter />
           <TodoSearch /> {/*Envío de las props*/}
     
-          
+            <TodoTwoList>
+
               <TodoList>
 
               {loading && <TodosLoading />}
@@ -51,14 +57,14 @@ function AppUI() {
               
             </TodoList>
 
-            <TodoList>
+            <TodoFinished>
 
               {loading && <TodosLoading />}
               {error && <TodosError />}
               {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
 
               {searchedTodos.map(todo => (
-                <TodoItem 
+                <TodoItem2 
                   key={todo.text} 
                   text={todo.text}
                   completed={todo.completed}
@@ -68,8 +74,9 @@ function AppUI() {
       
               ))}
               
-            </TodoList>
-            
+            </TodoFinished>
+
+          </TodoTwoList>  
     
           <CreateTodoButton 
             setOpenModal = {setOpenModal}/>
