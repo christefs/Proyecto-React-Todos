@@ -50,6 +50,25 @@ function AppUI() {
               ))}
               
             </TodoList>
+
+            <TodoList>
+
+              {loading && <TodosLoading />}
+              {error && <TodosError />}
+              {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
+
+              {searchedTodos.map(todo => (
+                <TodoItem 
+                  key={todo.text} 
+                  text={todo.text}
+                  completed={todo.completed}
+                  onComplete={() => finishTodo(todo.text)} /*Propiedad que llama a una función que actualice un estado en particular como completado*/
+                  onDelete={() => deleteTodo(todo.text)}
+                /> /*Se renderizan los todos a partir del estado derivado searchedTodos*/
+      
+              ))}
+              
+            </TodoList>
             
     
           <CreateTodoButton 
