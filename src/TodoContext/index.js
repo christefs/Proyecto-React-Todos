@@ -64,6 +64,18 @@ function TodoProvider({ children }) {
         saveTodos(newTodos);
       };
 
+      //A continuación copia de deleteTodo para segunda columna con items finalizados
+
+      const deleteTodo2 = (text) => {
+        const newTodos2 = [...todos]; /*Crea una copia del array todos*/
+        const todoIndex2 = newTodos2.findIndex( /*Para encontrar en la copia del array  el índice del todo que tenga el texto en particular*/
+          (todo) => todo.text === text /*Recibir cada todo con una propiedad .text que cuando sea igual al texto recibido en la función deleteTodo se identifique para obtener su índice y marcarlo como completado
+          y enviar la nueva lista de todos al actualizador setTodos  */
+        );
+        newTodos2.splice(todoIndex2, 1); /*Método para eliminar el elemento seleccionado, se le indica el índice del array y la cantidad de elementos*/
+        saveTodos(newTodos2);
+      };
+
     return (
         <TodoContext.Provider value={{
             loading,
@@ -76,6 +88,7 @@ function TodoProvider({ children }) {
             addTodo,
             finishTodo,
             deleteTodo,
+            deleteTodo2,
             openModal,
             setOpenModal,
         }}> {/*Toda la información que se requiera compartir en el contexto*/}

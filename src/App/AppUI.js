@@ -26,6 +26,7 @@ function AppUI() {
     searchedTodos,
     finishTodo,
     deleteTodo,
+    deleteTodo2,
     openModal,
     setOpenModal,
   } = React.useContext(TodoContext);
@@ -37,13 +38,16 @@ function AppUI() {
           <TodoSearch /> {/*Envío de las props*/}
     
             <TodoTwoList>
+            {loading && <TodosLoading />}
+            {error && <TodosError />}
+            {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
 
               <TodoList>
-
+{/*
               {loading && <TodosLoading />}
               {error && <TodosError />}
               {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
-
+*/}
               {searchedTodos.map(todo => (
                 <TodoItem 
                   key={todo.text} 
@@ -58,18 +62,18 @@ function AppUI() {
             </TodoList>
 
             <TodoFinished>
-
+{/*
               {loading && <TodosLoading />}
               {error && <TodosError />}
               {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
-
+*/}
               {searchedTodos.map(todo => (
                 <TodoItem2 
                   key={todo.text} 
                   text={todo.text}
-                  completed={todo.completed}
-                  onComplete={() => finishTodo(todo.text)} /*Propiedad que llama a una función que actualice un estado en particular como completado*/
-                  onDelete={() => deleteTodo(todo.text)}
+                  //completed={todo.completed}
+                  /*onComplete={() => finishTodo(todo.text)} /*Propiedad que llama a una función que actualice un estado en particular como completado*/
+                  onDelete={() => deleteTodo2(todo.text)}
                 /> /*Se renderizan los todos a partir del estado derivado searchedTodos*/
       
               ))}
