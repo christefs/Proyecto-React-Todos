@@ -14,6 +14,8 @@ import { TodosError } from '../TodosError';
 import { EmptyTodos } from '../EmptyTodos';
 import { CreateTodoButton } from '../CreateTodoButton';
 
+import { TodosLoadingHead} from '../TodosLoadingHead';
+
 import { Modal } from '../Modal';
 import { TodoForm } from '../TodoForm';
 import { TodoContext } from '../TodoContext';
@@ -33,8 +35,8 @@ function AppUI() {
 
     return (
         <>
-    
-          <TodoCounter />
+          {loading && <TodosLoadingHead />}
+          {(!loading) && <TodoCounter />}
           <TodoSearch /> {/*Envío de las props*/}
     
             <TodoTwoList>
